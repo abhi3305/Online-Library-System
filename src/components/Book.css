@@ -1,0 +1,32 @@
+.book {
+  border: 1px solid #ddd;
+  padding: 20px;
+  margin: 15px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.book img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+
+.book h3 {
+  font-size: 20px;
+  margin-top: 10px;
+}
+
+.book p {
+  font-size: 16px;
+}
+
+.book a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.book a:hover {
+  text-decoration: underline;
+}
