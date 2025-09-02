@@ -8,8 +8,8 @@ function Home() {
     <div className="home">
       <h1>Welcome to the Online Library</h1>
       <div className="categories">
-        <h3>Categories</h3>
         <ul>
+          <h3>Categories : </h3>
           <li><Link to="/browse/fiction">Fiction</Link></li>
           <li><Link to="/browse/non-fiction">Non-Fiction</Link></li>
           <li><Link to="/browse/sci-fi">Sci-Fi</Link></li>
@@ -23,7 +23,7 @@ function Home() {
               <img src={book.image} alt={book.title} />
               <h4>{book.title}</h4>
               <p>{book.author}</p>
-              <Link to={`/book/${book.id}`}>View Details</Link> {/* Navigate to book details */}
+              <Link to={`/book/${book.id}`}>View Details</Link>
             </div>
           ))}
         </div>

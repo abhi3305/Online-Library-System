@@ -1,9 +1,7 @@
-// src/App.jsx
-
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { Provider } from 'react-redux';  // Import Provider
-import store from './redux/store';  // Import the store
+import { Provider } from 'react-redux';
+import store from './redux/store';
 
 import Home from './pages/Home';
 import BrowseBooks from './pages/BrowseBooks';
@@ -15,14 +13,14 @@ import './App.css';
 
 function App() {
   return (
-    <Provider store={store}> {/* Wrap the app in the Redux provider */}
+    <Provider store={store}>
       <Router>
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/browse" element={<BrowseBooks />} />
+          <Route path="/browse/:category" element={<BrowseBooks />} /> {/* Fixed route */}
           <Route path="/add-book" element={<AddBook />} />
-          <Route path="/books/:category" element={<BrowseBooks />} />
           <Route path="/book/:id" element={<BookDetails />} />
           <Route path="*" element={<NotFound />} />
         </Routes>

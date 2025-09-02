@@ -1,29 +1,25 @@
-// src/pages/BrowseBooks.jsx
-
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';  // Import useSelector from Redux
+import { useSelector } from 'react-redux';
 import './BrowseBooks.css';
 
 function BrowseBooks() {
   const { category } = useParams();
   const [search, setSearch] = useState('');
 
-  // Fetch books from the Redux store (this will now include the mock data as initial state)
-  const books = useSelector((state) => state.books);  // Access the books from the Redux store
+  const books = useSelector((state) => state.books);
 
-  // Filter books by category (if category exists)
+  // Filter books by category and search
   const filteredBooks = books.filter(book =>
-    (category ? book.category.toLowerCase() === category.toLowerCase() : true) &&
+    (!category || book.category.toLowerCase() === category.toLowerCase()) &&
     (book.title.toLowerCase().includes(search.toLowerCase()) || 
      book.author.toLowerCase().includes(search.toLowerCase()))
   );
 
   return (
     <div className="browse-books">
-      {/* Search Bar Container */}
       <div className="search-bar-container">
-        <h2 className="text">Browse Books</h2>
+        <h2>{category ? category.charAt(0).toUpperCase() + category.slice(1) + " Books" : "Browse Books"}</h2>
         <input
           type="text"
           placeholder="Search by title or author"
@@ -33,7 +29,6 @@ function BrowseBooks() {
         />
       </div>
 
-      {/* Book List */}
       <div className="book-list">
         {filteredBooks.length > 0 ? (
           filteredBooks.map((book) => (
